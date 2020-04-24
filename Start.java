@@ -16,8 +16,10 @@ public class Start{
 	    game = new Game();
 	    Scanner gameInput = new Scanner(System.in);
 	    Timer timer = new Timer(game);
+	    Thread timeThread = new Thread(timer);
 	    game.setScanner(gameInput);
 	    game.setTimer(timer);
+	    game.setTimeThread(timeThread);
     }
     private static void startMenu(){
 	    System.out.println("Start Game?");

@@ -3,6 +3,7 @@ public class Game{
 	private Game game;
 	private Scanner gameInput;
 	private Timer timer;
+	private Thread timeThread;
 	public Game(){
 		this.game=this;
 	}
@@ -11,6 +12,9 @@ public class Game{
 	}
 	public void setTimer(Timer timer){
 		this.timer=timer;
+	}
+	public void setTimeThread(Thread timeThread){
+		this.timeThread=timeThread;
 	}
 	public Scanner getGameInput(){
 		return gameInput;
@@ -24,7 +28,12 @@ public class Game{
 			if(input.equals("exit")){
 				break;
 			}
+			parseCommands(input);
 		}
+	}
+	private void parseCommands(String input){
+		//Parse Commands here
+		System.out.println(">> " + input);
 	}
 
 }
