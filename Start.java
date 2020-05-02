@@ -26,6 +26,7 @@ public class Start{
 	    String line = game.getGameInput().nextLine();
 	    if(line.equals("Yes.")){
 		    System.out.println("Game Started.");
+		    game.getTimeThread().start();
 		    game.gameLoop();
 	    }
     }

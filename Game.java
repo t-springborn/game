@@ -22,10 +22,14 @@ public class Game{
 	public Timer getTimer(){
 		return timer;
 	}
+	public Thread getTimeThread(){
+		return timeThread;
+	}
 	public void gameLoop(){
 		while(true){
 			String input = gameInput.nextLine();
 			if(input.equals("exit")){
+				timer.setRunning(false);
 				break;
 			}
 			parseCommands(input);
