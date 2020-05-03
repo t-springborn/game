@@ -31,13 +31,18 @@ public class Timer implements Runnable{
 		}
 	}
 	private void tick(){
-		ListIterator<Action> iterator = actionList.listIterator(0);
-		while(iterator.hasNext()){
-			iterator.next().decTimeLeft();
-		}
-		while(actionList.getFirst().getTimeLeft()==0){
-			//execute Action
-			actionList.removeFirst();
+		if(actionList.peekFirst()!=null){
+			ListIterator<Action> iterator = actionList.listIterator(0);
+			while(iterator.hasNext()){
+				iterator.next().decTimeLeft();
+			}
+			while(actionList.getFirst().getTimeLeft()==0){
+				actionList.getFirst().execute();
+				actionList.removeFirst();
+				if(actionList.peekFirst()==null){
+					break;
+				}
+			}
 		}
 	}
 	public void addAction(Action action){

@@ -38,6 +38,11 @@ public class Game{
 	private void parseCommands(String input){
 		//Parse Commands here
 		System.out.println(">> " + input);
+		if(input.equals("testAction")){
+			//testAction
+			Action testAction = new Action(5, () -> System.out.println("Action Done!"));
+			timer.addAction(testAction);
+		}
 	}
 
 }
