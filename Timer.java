@@ -1,7 +1,9 @@
+import java.util.*;
 public class Timer implements Runnable{
 	private Game game;
 	private final int SLEEPTIME = 1000;
 	private boolean running=true;
+	private LinkedList<Action> actionList = new LinkedList<Action>();
 	public Timer(Game game){
 		this.game=game;
 	}
@@ -20,11 +22,34 @@ public class Timer implements Runnable{
 		while(running){
 			try{
 				Thread.sleep(SLEEPTIME);
-				System.out.println("Test");
+				//System.out.println("\nTest");
+				tick();
 			}
 			catch(InterruptedException e){
 				System.out.println(e);
 			}
 		}
 	}
+	private void tick(){
+		ListIterator<Action> iterator = actionList.listIterator(0);
+		while(iterator.hasNext()){
+			iterator.next().decTimeLeft();
+		}
+		while(actionList.getFirst().getTimeLeft()==0){
+			//execute Action
+			actionList.removeFirst();
+		}
+	}
+	public void addAction(Action action){
+		ListIterator<Action> iterator = actionList.listIterator(0);
+		int timeLeft=action.getTimeLeft();
+		while(iterator.hasNext()){
+			if(iterator.next().getTimeLeft()>timeLeft){
+				actionList.add(iterator.previousIndex(),action);
+				break;
+			}
+		}
+		actionList.addLast(action);
+	}
+
 }
