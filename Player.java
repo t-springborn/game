@@ -1,6 +1,7 @@
 import java.util.*;
 public class Player{
 	private int id;
+	private PlayerInterface playerInterface = new PlayerInterface(this);
 	private HashMap<String,Unit> unitMap = new HashMap<String,Unit>();
 	public Player(int id){
 		this.id=id;
@@ -14,5 +15,8 @@ public class Player{
 	}
 	public Unit getUnit(String name){
 		return unitMap.get(name);
+	}
+	public PlayerInterface getInterface(){
+		return this.playerInterface;
 	}
 }
