@@ -4,6 +4,7 @@ public class Game{
 	private Scanner gameInput;
 	private Timer timer;
 	private Thread timeThread;
+	private Player player1 = new Player(1);
 	public Game(){
 		this.game=this;
 	}
@@ -42,6 +43,24 @@ public class Game{
 			//testAction
 			Action testAction = new Action(5, () -> System.out.println("Action Done!"));
 			timer.addAction(testAction);
+		}
+		if(input.equals("testCreate")){
+			//testAction
+			Unit testUnit = new Unit();
+			if(player1.hasUnit("testUnit")){
+				System.out.println("Unit already exists");
+			}else{
+				player1.addUnit("testUnit",testUnit);
+			}
+		}
+		if(input.equals("testUpgrade")){
+			//testAction
+			if(player1.hasUnit("testUnit")){
+				Action testAction = new Action(5, () -> player1.getUnit("testUnit").incLevel());
+				timer.addAction(testAction);
+			}else{
+				System.out.println("Unit doesn't exist");
+			}
 		}
 	}
 
