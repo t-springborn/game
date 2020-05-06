@@ -1,10 +1,11 @@
-import java.util.Scanner;
+import java.util.*;
 public class Game{
 	private Game game;
 	private Scanner gameInput;
 	private Timer timer;
 	private Thread timeThread;
 	private Player player1 = new Player(1);
+	private HashMap<String,Player> players = new HashMap<String,Player>();
 	public Game(){
 		this.game=this;
 	}
@@ -26,6 +27,10 @@ public class Game{
 	public Thread getTimeThread(){
 		return timeThread;
 	}
+	public HashMap<String,Player> getPlayers(){
+		return this.players;
+	}
+	
 	public void gameLoop(){
 		while(true){
 			String input = gameInput.nextLine();

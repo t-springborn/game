@@ -1,5 +1,7 @@
+import java.net.*;
 public class PlayerInterface{
 	private Player player;
+	private Socket socket;
 	public PlayerInterface(Player player){
 		this.player=player;
 	}
@@ -14,6 +16,12 @@ public class PlayerInterface{
 	}
 	public void output(String output){
 		//dummy
+	}
+	public Socket getSocket(){
+		return this.socket;
+	}
+	public void setSocket(Socket socket){
+		this.socket=socket;
 	}
 
 }
