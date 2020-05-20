@@ -14,6 +14,8 @@ public class IOHandler implements Runnable{
 
 	public void run(){
 		//Socket Stuff
+		setup();
+		acceptLoop();
 	}
 
 	private void setup(){
